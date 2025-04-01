@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" placeholder="Enter your first number" id="num1">
+    <input type="number" placeholder="Enter your second number" id="num2">
+    <button onclick="sum()">Sum</button>
+    <script>
+        function sum(){
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var ans = num1 + num2
+            document.write('sum of '+num1+' and ' + num2+ ' is '+ ans)
+        }
+    </script>
+</body>
+</html>

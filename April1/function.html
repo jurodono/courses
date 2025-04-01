@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>First Number: <input type="number" id="fn"></h4>
+    <h4>First Number: <input type="number" id="sn"></h4>
+    <button onclick="sum()">Sum</button>
+    <h4 id="sumResult" style="color: blue"></h4>
+    <script>
+        function sum(){
+            var num1 = document.getElementById('fn').value;
+            var num2 = document.getElementById('sn').value;
+            var num3 = parseFloat(num1) + parseFloat(num2);
+            document.getElementById("sumResult").textContent = "Sum: "+ num3;
+        }
+    </script>
+</body>
+</html>

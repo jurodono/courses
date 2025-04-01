@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .calculator{
+            background-color: black;
+            max-width: 15.6pc;
+        }
+        .display input{
+            border: none;
+            background-color:black;
+        }
+        #display_box{
+            font-size: 20px;
+            padding-top: 20vh;
+            padding-bottom: 10px;
+            color: white;
+        }
+        #scd_display{
+            padding-left: 4.9pc;
+            color: grey;
+        }
+        .firstline button{
+            cursor: pointer;
+            font-size: 1.5pc;
+            padding-right: 2.7pc;
+            color: rgb(245, 70, 1);
+            background: none;
+            border: black;
+        }
+        .firstline button:hover{
+            color: orange;
+        }
+        .middleones button{
+            padding-top: 20px;
+            cursor: pointer;
+            font-size: 1.5pc;
+            padding-right: 3.2pc;
+            color: white;
+            border: black;
+            background: none;
+        }
+        .middleones button:hover{
+            color: grey;
+        }
+        .lastsec button{
+            padding: 20px 0px;
+            cursor: pointer;
+            font-size: 1.5pc;
+            color: white;
+            border: black;
+            background: none;
+        }
+        button.zero{
+            padding-left: 5pc;
+        }
+        button.equals{
+            border: 0px;
+            background-color: rgb(245, 70, 1);
+            border-radius: 50%;
+        }
+        button.equals:hover{
+            background-color: orange;
+            color: white;
+        }
+        .gre:hover{
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <input type="number" id="display_box" dir="rtl" placeholder="0">
+            <input type="number" id="scd_display" dir="rtl" placeholder="" readonly>
+        </div>
+        <div class="options">
+            <div class="firstline">
+                <button id="c" onclick="clr()">c</button>
+                <button id="del" style="font-size: 21px">Del</button>
+                <button id="%">%</button>
+                <button id="/" style="padding: 0px 0px">&divide;</button><br>
+            </div>
+            
+            <div class="middleones">
+                <button id="7" onclick="pasval(7)">7</button>
+                <button id="8" onclick="pasval(8)">8</button>
+                <button id="9" onclick="pasval(9)">9</button>
+                <button id="x" style="padding: 0px 0px">x</button><br>
+                <button id="4" onclick="pasval(4)">4</button>
+                <button id="5" onclick="pasval(5)">5</button>
+                <button id="6" onclick="pasval(6)">6</button>
+                <button id="-" style="padding: 0px 0px">-</button><br>
+                <button id="1" onclick="pasval(1)">1</button>
+                <button id="2" onclick="pasval(2)">2</button>
+                <button id="3" onclick="pasval(3)">3</button>
+                <button id="+" style="padding: 0px 0px" onclick="pass_operator('+')">+</button><br>
+            </div>
+            <div class="lastsec">
+                <button id="0" onclick="pasval(0)" class="gre zero">0</button>
+                <button class="gre" id="." style="padding-left: 3.9pc;">.</button>
+                <button id="=" class="equals" style="padding: 2px 8px; margin-left: 2.8pc">=</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var operator = '';
+        var isoperatorclicked = false
+        var sum;
+        function AfterOperation(val1, val2, op){
+            document.write("oprator",operator)
+            switch(op){
+                case '+':
+                    sum = val1 + val2;
+                    document.getElementById('scd_display').value = sum;
+            }
+        }
+        function pasval(num){
+            if (isoperatorclicked){
+                val1 = parseFloat(document.getElementById('display_box').value);
+                val2 = parseFloat(document.getElementById('scd_display').value);
+                op = operation;
+                document.write('operation: ', operation);
+                AfterOperation(val1, val2, op);
+            }else{
+                document.getElementById('display_box').value += num;
+                document.getElementById('scd_display').value += num;
+            }
+            isoperatorclicked = false;
+        }
+        function clr(){
+            document.getElementById('display_box').value = "";
+            document.getElementById('scd_display').value = "";
+        }
+        function calculate(op){
+            operator = op;
+            var num1 = parseFloat(document.getElementById("display_box").value);
+            var num2 = parseFloat(document.getElementById("scd_display").value);
+            num2 += num1
+            var second_display = document.getElementById('scd_display').value
+            switch(operator){
+                case '+':
+                     second_display = num2
+            }
+        }
+        function pass_operator(para){
+            document.getElementById('display_box').value = "";
+            operator = para;
+            isoperatorclicked = true;
+        }
+    </script>
+</body>
+</html>
